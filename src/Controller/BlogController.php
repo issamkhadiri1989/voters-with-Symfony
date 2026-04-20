@@ -45,7 +45,7 @@ final class BlogController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '__edit')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[IsGranted(attribute: 'CAN_EDIT_BLOG', subject: 'blog')]
     public function editBlog(Request $request, BlogHandler $blogHandler, Blog $blog): Response
     {
         $form = $this->createForm(BlogType::class, $blog);
