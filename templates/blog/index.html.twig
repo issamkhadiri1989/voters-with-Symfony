@@ -1,0 +1,374 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- Breadcrumb -->
+    <section class="py-3 border-bottom bg-body-tertiary">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 small">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="blog-list.html" class="text-decoration-none">{{ blog.category.name }}</a></li>
+                    <li class="breadcrumb-item active text-body-tertiary" aria-current="page">
+                        {{ blog.title }}
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Article Header -->
+    <header class="py-5 border-bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <a href="blog-list.html?category=design"
+                           class="badge text-bg-warning text-decoration-none fw-normal px-3 py-2 rounded-pill">
+                            {{ blog.category.name | upper }}
+                        </a>
+                        <span class="text-body-tertiary small">·</span>
+                        <span class="text-body-tertiary small">12 min read</span>
+                        <span class="text-body-tertiary small">·</span>
+                        <span class="text-body-tertiary small">{{ blog.createdAt | date('F, d Y') }}</span>
+                    </div>
+                    <h1 class="display-5 fw-bold mb-4">
+                        {{ blog.title }}
+                    </h1>
+                    <p class="lead text-body-secondary mb-5">Negative space isn't emptiness — it's a deliberate tool that shapes perception, guides attention, and gives interfaces room to breathe. We explore why leading designers are saying less to communicate more.</p>
+
+                    <!-- Author row -->
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 py-4 border-top border-bottom">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://placehold.co/52x52/6f42c1/ffffff?text=AR" alt="Amara Reyes" class="rounded-circle" width="52" height="52">
+                            <div>
+                                <p class="fw-semibold mb-0">
+                                    {{ blog.author.fullName }}
+                                </p>
+                                <p class="text-body-tertiary small mb-0">Senior Product Designer · {{ blog.author.blogs | length }} articles</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" title="Share on X">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+                                &nbsp;Share
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" title="Copy link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287zm5.57-3.117a2 2 0 0 1 0 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L5.121 3.89A3 3 0 0 0 7.414 10.5l.587-.587a1 1 0 0 0 .154-.199 2 2 0 0 1-.861-3.337l1.827-1.828a2 2 0 0 1 2.83 0z"/></svg>
+                                &nbsp;Copy link
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" title="Save article">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/></svg>
+                                &nbsp;Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <figure class="mb-2">
+                    <img src="https://placehold.co/1200x560/1a1a2e/ffffff?text=Article+Hero+Image" alt="White space in UI design" class="img-fluid w-100 rounded-4 object-fit-cover" style="max-height: 500px;">
+                    <figcaption class="text-body-tertiary small mt-2 text-center">A minimal interface from a recent redesign project — every element earns its place.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Body + Sidebar -->
+    <div class="container pb-5">
+        <div class="row justify-content-center g-5">
+
+            <!-- Main Content -->
+            <div class="col-lg-7">
+                <article class="blog-content">
+
+                    <p class="fs-5 text-body-secondary">There is a peculiar courage required to leave something out. In a world that rewards density — more features, more content, more noise — choosing restraint feels almost subversive. And yet, the most celebrated interfaces of the past decade share a single quality: they know when to stop.</p>
+
+                    <h2 class="h3 fw-bold mt-5 mb-3">What we mean by white space</h2>
+                    <p>White space — or negative space — refers to the unmarked areas between and around design elements. It is not simply a background. It is an active participant in the composition, influencing how the eye moves, how the brain processes information, and ultimately how a person feels while using a product.</p>
+                    <p>It exists at multiple scales: <strong>macro white space</strong> separates major sections and breathes life into a layout; <strong>micro white space</strong> lives between letters, lines, and small UI components, making text legible and controls approachable.</p>
+
+                    <!-- Callout block -->
+                    <div class="p-4 rounded-4 bg-primary bg-opacity-10 border border-primary border-opacity-25 my-5">
+                        <p class="mb-0 fs-5 fst-italic text-body">"Space is the breath of art." — Frank Lloyd Wright. In interface design, that breath is what keeps users from feeling suffocated.</p>
+                    </div>
+
+                    <h2 class="h3 fw-bold mt-5 mb-3">The psychology behind the pause</h2>
+                    <p>When elements are crammed together, the visual cortex works overtime trying to separate signal from noise. Cognitive load increases. Decision-making slows. Users bounce.</p>
+                    <p>Generous spacing does the opposite — it groups related items, separates unrelated ones, and creates a hierarchy that the eye follows instinctively. It transforms a screen full of information into a guided experience.</p>
+                    <p>Research in visual perception consistently shows that users rate spacious layouts as more trustworthy, more professional, and easier to understand — even when the underlying content is identical.</p>
+
+                    <!-- Inline image -->
+                    <figure class="my-5">
+                        <img src="https://placehold.co/900x420/e9ecef/495057?text=Before+%2F+After+Comparison" alt="Before and after layout comparison" class="img-fluid w-100 rounded-3">
+                        <figcaption class="text-body-tertiary small mt-2">The same content, two densities. Users consistently preferred the spacious version by a margin of 3 to 1 in our internal testing.</figcaption>
+                    </figure>
+
+                    <h2 class="h3 fw-bold mt-5 mb-3">Where teams go wrong</h2>
+                    <p>The most common mistake is treating white space as wasted real estate. Stakeholders ask designers to "fill that gap" or "use that area" — as if emptiness represents failure rather than intention.</p>
+                    <p>The second mistake is applying white space uniformly. Not all space is equal. Space between a heading and its body text is a relationship signal. Space between two unrelated sections is a section break. Collapsing them to the same value destroys the hierarchy you worked hard to build.</p>
+
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item ps-0 border-start-0 border-end-0">
+                            <strong>Over-crowding interactive elements</strong> — touch targets that are too close together cause mis-taps and frustration, especially on mobile.
+                        </li>
+                        <li class="list-group-item ps-0 border-start-0 border-end-0">
+                            <strong>Ignoring line height</strong> — body text needs at least 1.5× line height to remain comfortable across a full paragraph.
+                        </li>
+                        <li class="list-group-item ps-0 border-start-0 border-end-0">
+                            <strong>Inconsistent spacing scales</strong> — mixing arbitrary pixel values breaks visual rhythm. A 4px or 8px base grid solves this instantly.
+                        </li>
+                        <li class="list-group-item ps-0 border-start-0 border-end-0">
+                            <strong>Responsive regressions</strong> — spacing that looks intentional on desktop collapses to nothing at 375px and suddenly everything feels cramped again.
+                        </li>
+                    </ul>
+
+                    <h2 class="h3 fw-bold mt-5 mb-3">Practical principles to apply today</h2>
+                    <p>You don't need a full redesign to start improving your use of space. Here are four principles you can act on immediately:</p>
+
+                    <div class="row g-3 my-4">
+                        <div class="col-sm-6">
+                            <div class="p-4 rounded-4 bg-body-secondary h-100">
+                                <div class="fw-bold mb-1">01 — Use a spacing scale</div>
+                                <p class="small text-body-secondary mb-0">Commit to a finite set of spacing values (4, 8, 12, 16, 24, 32, 48, 64px). Never invent a new value. Consistency is the foundation of visual rhythm.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-4 rounded-4 bg-body-secondary h-100">
+                                <div class="fw-bold mb-1">02 — Start with too much</div>
+                                <p class="small text-body-secondary mb-0">Add spacing generously first, then reduce until it feels right. It's far easier to tighten space than to find where you forgot to add it.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-4 rounded-4 bg-body-secondary h-100">
+                                <div class="fw-bold mb-1">03 — Respect proximity</div>
+                                <p class="small text-body-secondary mb-0">Items that belong together should be close; items that don't should be far apart. The gap between groups should always be larger than the gap within them.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-4 rounded-4 bg-body-secondary h-100">
+                                <div class="fw-bold mb-1">04 — Test at every breakpoint</div>
+                                <p class="small text-body-secondary mb-0">A layout that breathes on a 1440px monitor may suffocate at 390px. Review your spacing decisions at every major breakpoint before shipping.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="h3 fw-bold mt-5 mb-3">The competitive advantage of restraint</h2>
+                    <p>As products compete for attention in increasingly crowded markets, the interfaces that win are often the ones that ask the least of their users. A checkout flow that takes three relaxed steps beats one that crams seven into the same screen — even if the functional difference is minimal.</p>
+                    <p>White space is, in that sense, a form of respect. It says: <em>we believe your attention is valuable, and we won't waste it</em>. That message, felt viscerally through the design, builds trust faster than any copy ever could.</p>
+
+                    <!-- Tags -->
+                    <div class="mt-5 pt-4 border-top d-flex flex-wrap gap-2 align-items-center">
+                        <span class="text-body-secondary small me-1">Tags:</span>
+                        <a href="#" class="badge text-bg-light border text-body-secondary text-decoration-none fw-normal px-3 py-2 rounded-pill">UI Design</a>
+                        <a href="#" class="badge text-bg-light border text-body-secondary text-decoration-none fw-normal px-3 py-2 rounded-pill">White Space</a>
+                        <a href="#" class="badge text-bg-light border text-body-secondary text-decoration-none fw-normal px-3 py-2 rounded-pill">Typography</a>
+                        <a href="#" class="badge text-bg-light border text-body-secondary text-decoration-none fw-normal px-3 py-2 rounded-pill">Visual Design</a>
+                        <a href="#" class="badge text-bg-light border text-body-secondary text-decoration-none fw-normal px-3 py-2 rounded-pill">Product</a>
+                    </div>
+
+                </article>
+
+                <!-- Author Bio Card -->
+                <div class="card border shadow-sm rounded-4 mt-5 p-4">
+                    <div class="d-flex gap-3">
+                        <img src="https://placehold.co/72x72/6f42c1/ffffff?text=AR" alt="Amara Reyes" class="rounded-circle flex-shrink-0" width="72" height="72">
+                        <div>
+                            <p class="fw-bold mb-1">
+                                {{ blog.author.fullName }}
+                            </p>
+                            <p class="text-body-secondary small mb-3">Senior Product Designer at Studio Null. She has spent the last decade working at the intersection of visual design and user psychology, helping teams ship interfaces that feel effortless.</p>
+                            <a href="author.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">View all articles →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                <section class="mt-5">
+                    <h2 class="h4 fw-bold mb-4">Comments <span class="badge text-bg-secondary fw-normal">3</span></h2>
+
+                    <!-- Comment 1 -->
+                    <div class="d-flex gap-3 mb-4">
+                        <img src="https://placehold.co/40x40/198754/ffffff?text=JD" alt="Jean Dupont" class="rounded-circle flex-shrink-0" width="40" height="40">
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <span class="fw-semibold small">Jean Dupont</span>
+                                <span class="text-body-tertiary small">June 5, 2025</span>
+                            </div>
+                            <p class="small text-body-secondary mb-1">This is exactly what I needed to share with my team. The "start with too much" principle alone will save us so many back-and-forth design reviews.</p>
+                            <button class="btn btn-link btn-sm text-body-tertiary text-decoration-none p-0 small">↩ Reply</button>
+                        </div>
+                    </div>
+
+                    <!-- Comment 2 -->
+                    <div class="d-flex gap-3 mb-4">
+                        <img src="https://placehold.co/40x40/dc3545/ffffff?text=MK" alt="Mia Kovač" class="rounded-circle flex-shrink-0" width="40" height="40">
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <span class="fw-semibold small">Mia Kovač</span>
+                                <span class="text-body-tertiary small">June 6, 2025</span>
+                            </div>
+                            <p class="small text-body-secondary mb-1">The Frank Lloyd Wright quote is perfect. I've been trying to articulate why our dashboards feel so suffocating — it's exactly this. Sending to the whole design team.</p>
+                            <button class="btn btn-link btn-sm text-body-tertiary text-decoration-none p-0 small">↩ Reply</button>
+                        </div>
+                    </div>
+
+                    <!-- Comment 3 (reply) -->
+                    <div class="d-flex gap-3 mb-5 ms-5">
+                        <img src="https://placehold.co/40x40/6f42c1/ffffff?text=AR" alt="Amara Reyes" class="rounded-circle flex-shrink-0" width="40" height="40">
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <span class="fw-semibold small">Amara Reyes</span>
+                                <span class="badge text-bg-primary fw-normal" style="font-size: 0.65rem;">Author</span>
+                                <span class="text-body-tertiary small">June 6, 2025</span>
+                            </div>
+                            <p class="small text-body-secondary mb-1">Thank you Mia! Dashboards are the hardest case — so much data competing for attention. Hope it helps the team!</p>
+                            <button class="btn btn-link btn-sm text-body-tertiary text-decoration-none p-0 small">↩ Reply</button>
+                        </div>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <div class="card border rounded-4 p-4 bg-body-secondary">
+                        <h3 class="h6 fw-bold mb-3">Leave a comment</h3>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Your name">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" placeholder="your@email.com">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4" placeholder="Share your thoughts…"></textarea>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-primary px-4 rounded-pill">Post comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="col-lg-3">
+
+                <!-- Progress indicator -->
+                <div class="sticky-top" style="top: 80px;">
+
+                    <!-- Reading progress -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between small text-body-tertiary mb-1">
+                            <span>Reading progress</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="progress" style="height: 4px; border-radius: 2px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <!-- Table of contents -->
+                    <div class="card border rounded-4 p-4 mb-4">
+                        <p class="fw-semibold small mb-3 text-body-secondary text-uppercase" style="letter-spacing: .05em; font-size: 0.7rem;">In this article</p>
+                        <nav>
+                            <ul class="list-unstyled mb-0 small">
+                                <li class="mb-2"><a href="#" class="text-decoration-none text-body-secondary d-flex align-items-start gap-2"><span class="text-body-tertiary">01</span> What we mean by white space</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none text-body-secondary d-flex align-items-start gap-2"><span class="text-body-tertiary">02</span> The psychology behind the pause</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none text-body-secondary d-flex align-items-start gap-2"><span class="text-body-tertiary">03</span> Where teams go wrong</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none text-body-secondary d-flex align-items-start gap-2"><span class="text-body-tertiary">04</span> Practical principles to apply today</a></li>
+                                <li class="mb-0"><a href="#" class="text-decoration-none text-body-secondary d-flex align-items-start gap-2"><span class="text-body-tertiary">05</span> The competitive advantage of restraint</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="card border rounded-4 p-4 mb-4 bg-primary text-white">
+                        <p class="fw-bold mb-1">Enjoy this article?</p>
+                        <p class="small mb-3" style="opacity: 0.75;">Get the next one in your inbox. No spam.</p>
+                        <input type="email" class="form-control form-control-sm mb-2" placeholder="your@email.com">
+                        <button class="btn btn-light btn-sm text-primary fw-semibold w-100 rounded-pill">Subscribe free</button>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="card border rounded-4 p-4">
+                        <p class="fw-semibold small mb-3 text-body-secondary text-uppercase" style="letter-spacing: .05em; font-size: 0.7rem;">Share this article</p>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" class="me-2"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+                                Share on X
+                            </a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" class="me-2"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H8.82v-5.976h2.003l.375-2.325H8.82V6.38c0-.636.311-1.256 1.31-1.256h1.014V3.129S10.295 3 9.396 3C7.55 3 6.35 4.11 6.35 6.114v1.535H4.35v2.325h2V16H1.175C.526 16 0 15.487 0 14.854z"/></svg>
+                                Share on Facebook
+                            </a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" class="me-2"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H8.82v-5.976h2.003l.375-2.325H8.82V6.38c0-.636.311-1.256 1.31-1.256h1.014V3.129S10.295 3 9.396 3C7.55 3 6.35 4.11 6.35 6.114v1.535H4.35v2.325h2V16H1.175C.526 16 0 15.487 0 14.854z"/></svg>
+                                Share on LinkedIn
+                            </a>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" class="me-2"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287zm5.57-3.117a2 2 0 0 1 0 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L5.121 3.89A3 3 0 0 0 7.414 10.5l.587-.587a1 1 0 0 0 .154-.199 2 2 0 0 1-.861-3.337l1.827-1.828a2 2 0 0 1 2.83 0z"/></svg>
+                                Copy link
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="py-5 bg-body-secondary border-top">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h2 class="h4 fw-bold mb-0">Related articles</h2>
+                <a href="blog-list.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">View all →</a>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="card h-100 border shadow-sm rounded-4 overflow-hidden">
+                        <a href="blog-detail.html" class="d-block overflow-hidden" style="max-height: 180px;">
+                            <img src="https://placehold.co/600x320/6f42c1/ffffff?text=Related+1" class="card-img-top w-100 h-100 object-fit-cover" alt="">
+                        </a>
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-secondary fw-normal mb-2">Design</span>
+                            <h3 class="h6 fw-bold mb-2"><a href="blog-detail.html" class="text-decoration-none text-body">Accessibility isn't a checklist — it's a mindset</a></h3>
+                            <p class="small text-body-tertiary mb-0">Apr 28, 2025 · 10 min read</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="card h-100 border shadow-sm rounded-4 overflow-hidden">
+                        <a href="blog-detail.html" class="d-block overflow-hidden" style="max-height: 180px;">
+                            <img src="https://placehold.co/600x320/dc3545/ffffff?text=Related+2" class="card-img-top w-100 h-100 object-fit-cover" alt="">
+                        </a>
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-danger fw-normal mb-2">Product</span>
+                            <h3 class="h6 fw-bold mb-2"><a href="blog-detail.html" class="text-decoration-none text-body">Why your roadmap is lying to you — and how to fix it</a></h3>
+                            <p class="small text-body-tertiary mb-0">May 20, 2025 · 5 min read</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="card h-100 border shadow-sm rounded-4 overflow-hidden">
+                        <a href="blog-detail.html" class="d-block overflow-hidden" style="max-height: 180px;">
+                            <img src="https://placehold.co/600x320/198754/ffffff?text=Related+3" class="card-img-top w-100 h-100 object-fit-cover" alt="">
+                        </a>
+                        <div class="card-body p-4">
+                            <span class="badge text-bg-success fw-normal mb-2">Culture</span>
+                            <h3 class="h6 fw-bold mb-2"><a href="blog-detail.html" class="text-decoration-none text-body">The async-first workplace: what two years of remote taught us</a></h3>
+                            <p class="small text-body-tertiary mb-0">May 12, 2025 · 6 min read</p>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

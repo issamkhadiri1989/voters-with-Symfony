@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(blog_form) }}
+    <div class="row mt-2 mb-2">
+        <div class="mb-3">
+            {{ form_row(blog_form.title, {
+                label_attr: {class: 'form-label'},
+                attr: {class: 'form-control'}
+            }) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(blog_form.content, {
+                label_attr: {class: 'form-label'},
+                attr: {class: 'form-control'}
+            }) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(blog_form.status, {
+                label_attr: {class: 'form-label'},
+                attr: {class: 'form-control'}
+            }) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(blog_form.category, {
+                label_attr: {class: 'form-label'},
+                attr: {class: 'form-control'}
+            }) }}
+        </div>
+
+        <div class="mb-3 mt-2 mb-2">
+            <button type="submit" class="btn btn-success">
+                Enregistrer
+            </button>
+        </div>
+    </div>
+    {{ form_end(blog_form) }}
+{% endblock %}
